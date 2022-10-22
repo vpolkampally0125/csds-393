@@ -17,4 +17,10 @@ internal class BudgetParentTest {
     fun getCurrentDate() {
         val budgetParent = BudgetParent(76,PriorityQueue())
     }
+
+    @Test
+    fun tagEntry() {
+        val budgetParent = BudgetParent(78,PriorityQueue())
+        assertEquals(mutableListOf("Food"), budgetParent.tagEntry(BudgetEntry("Chipotle", Date(),8, mutableListOf()),"Food"))
+    }
 }

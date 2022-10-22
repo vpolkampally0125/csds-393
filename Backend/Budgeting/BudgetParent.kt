@@ -10,6 +10,8 @@ class BudgetParent(
 
     fun getTot() : Int { return totalValue; }
 
+
+
     fun removePastNodes() {
         var reverseQueue : PriorityQueue<BudgetEntry> = PriorityQueue<BudgetEntry>(Comparator<BudgetEntry> { a, b ->
             b.date.compareTo(a.date)
@@ -21,7 +23,7 @@ class BudgetParent(
             entries.remove(currentElement)
     }
 
-    fun addValue(entry : BudgetEntry) {
+    fun addValue(entry : BudgetEntry){
         entries.add(entry);
         totalValue += entry.value
     }
@@ -31,8 +33,9 @@ class BudgetParent(
         totalValue -= entry.value
     }
 
-    fun tagEntry(entry : BudgetEntry, tag : String) {
+    fun tagEntry(entry : BudgetEntry, tag : String): MutableList<String> {
         entry.tags.add(tag)
+        return entry.tags
     }
 
     fun removeTagFromEntry(entry : BudgetEntry, tag : String) { entry.tags.remove(tag) }
