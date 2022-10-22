@@ -12,4 +12,9 @@ internal class BudgetParentTest {
         val budgetParent = BudgetParent(14, PriorityQueue())
         assertEquals(14,budgetParent.getTot())
     }
+
+    @Test
+    fun getCurrentDate() {
+        val budgetParent = BudgetParent(76,PriorityQueue())
+    }
 }

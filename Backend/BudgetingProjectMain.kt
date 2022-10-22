@@ -20,6 +20,7 @@ class BudgetingProjectMain(path : String) {
     fun addExpense(name : String, value : Int, tags : MutableList<String>) {
         var currDate : Date = Date()
         expenses.entries.add(BudgetEntry(name, currDate, value, tags))
+
     }
 
     init {
@@ -34,7 +35,7 @@ class BudgetingProjectMain(path : String) {
 }
 
 fun main() {
-    var instance : BudgetingProjectMain = BudgetingProjectMain("C:/Users/niels/Downloads/outputfile.json/")
+    var instance : BudgetingProjectMain = BudgetingProjectMain("/Users/eduardobautista/Downloads")
     println("Total Income: ${instance.income.totalValue}")
     println("Total Expenses : ${instance.expenses.totalValue}")
     println("Income List: ${instance.income.entries}")
