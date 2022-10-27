@@ -20,7 +20,6 @@ class BudgetingProjectMain(path : String) {
     fun addExpense(name : String, value : Int, tags : MutableList<String>) {
         var currDate : Date = Date()
         expenses.entries.add(BudgetEntry(name, currDate, value, tags))
-
     }
 
     init {

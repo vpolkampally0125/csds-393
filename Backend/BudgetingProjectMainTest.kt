@@ -7,7 +7,7 @@ internal class BudgetingProjectMainTest {
     @Test
     fun getIncome() {
         val budgetingProjectMain = BudgetingProjectMain("/Users/eduardobautista/Downloads/outputfile.json")
-        assertEquals(0, budgetingProjectMain.getIncome())
+        assertEquals(100, budgetingProjectMain.getIncome())
 
     }
 
@@ -16,4 +16,5 @@ internal class BudgetingProjectMainTest {
         val budgetingProjectMain = BudgetingProjectMain("/Users/eduardobautista/Downloads/outputfile.json")
         assertEquals(0, budgetingProjectMain.getExpenses())
     }
+
 }
