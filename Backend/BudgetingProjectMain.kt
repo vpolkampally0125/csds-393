@@ -34,7 +34,7 @@ class BudgetingProjectMain(path : String) {
 }
 
 fun main() {
-    var instance : BudgetingProjectMain = BudgetingProjectMain("/Users/eduardobautista/Downloads")
+    var instance : BudgetingProjectMain = BudgetingProjectMain("C:/Users/niels/Downloads/outputfile.json/")
     println("Total Income: ${instance.income.totalValue}")
     println("Total Expenses : ${instance.expenses.totalValue}")
     println("Income List: ${instance.income.entries}")

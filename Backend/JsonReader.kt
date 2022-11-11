@@ -43,7 +43,7 @@ class JsonReader(inputString : String) {
                 tags = tagList
             ))
         }
-        income = BudgetParent(incomeRoot.get("total").asInt, incomeEntryQueue)
+        income = BudgetParent(incomeRoot.get("total").asInt, incomeEntryQueue, inputString, "income")
 
         var expenseRoot : JsonObject = root.get("expenses").asJsonObject
         var expenseEntries : JsonArray = expenseRoot.get("entries").asJsonArray
@@ -68,7 +68,7 @@ class JsonReader(inputString : String) {
                 tags = tagList
             ))
         }
-        expenses = BudgetParent(expenseRoot.get("total").asInt, expenseEntryQueue)
+        expenses = BudgetParent(expenseRoot.get("total").asInt, expenseEntryQueue, inputString, "expenses")
 
         println(GsonBuilder().setPrettyPrinting().create().toJson(root))
         var tagArray : JsonArray = root.get("all_tags").asJsonArray
