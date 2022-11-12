@@ -12,7 +12,7 @@ class FinancialGoals(
 ) : JsonUpdateable(filePath, jsonHeading) {
     var goalMap : MutableMap<String, Goal>
 
-    fun addGoal(goalName : String, goalAmount : Int, goalDate : Date, goalEntries : MutableList<Pair<Date, Int>>) {
+    fun addGoal(goalName : String, goalAmount : Int, goalDate : Date, goalEntries : MutableList<Pair<Date, Int>>): Boolean {
         goalMap.put(
             goalName, Goal(
                 goalNameInit = goalName,
@@ -21,36 +21,43 @@ class FinancialGoals(
                 entriesInit = goalEntries
             )
         )
+        return true
     }
 
-    fun modfiyGoal(goalName : String, amount : Int) {
+    fun modfiyGoalAmount(goalName : String, amount : Int): Boolean {
         if(goalMap.contains(goalName)) {
             var modGoal: Goal = goalMap.get(goalName)!!
             modGoal.goalAmount = amount
+            return true
         }
-        else {throw Exception("That was not a valid goalName")}
+        else {return false}
     }
 
-    fun modifyGoal(goalName : String, newDate : Date) {
+    fun modifyGoalDate(goalName : String, newDate : Date): Boolean {
         if(goalMap.contains(goalName)) {
             var modGoal: Goal = goalMap.get(goalName)!!
             modGoal.goalDate = newDate
+            return true
         }
-        else {throw Exception("That was not a valid goalName")}
+        else {
+        return false
+        }
     }
 
-    fun modifyGoal(goalName : String, newEntry : Pair<Date, Int>) {
+    fun modifyGoalNewEntry(goalName : String, newEntry : Pair<Date, Int>): Boolean {
         if(goalMap.contains(goalName)) {
             var modGoal: Goal = goalMap.get(goalName)!!
             modGoal.entries.add(newEntry)
+            return true
         }
-        else {throw Exception("That was not a valid goalName")}
+        else {
+            return false
+        }
     }
 
-    fun modifyGoal(goalName : String, newName : String) {
+    fun modifyGoalNewName(goalName : String, newName : String): Boolean {
         if(goalMap.contains(goalName)) {
             var modGoal: Goal = goalMap.get(goalName)!!
-
             var savedAmount : Int = modGoal.goalAmount
             var savedDate : Date = modGoal.goalDate
             var savedEntries : MutableList<Pair<Date, Int>> = modGoal.entries
@@ -62,8 +69,9 @@ class FinancialGoals(
                 goalDateInit = savedDate,
                 entriesInit = savedEntries
             ))
+            return true
         }
-        else {throw Exception("That was not a valid goalName")}
+        else {return false}
     }
 
     override fun updateJson(): Boolean {
@@ -71,7 +79,6 @@ class FinancialGoals(
             for(index in 0..(this.size() - 1))
                 this.remove(0)
         }
-
         var valueMap : List<Goal> = goalMap.values.toList()
         for(element in valueMap) {
             var inputObject = JsonObject()
@@ -88,7 +95,6 @@ class FinancialGoals(
             })
             specRoot.asJsonArray.add(inputObject)
         }
-
         return true
     }
 

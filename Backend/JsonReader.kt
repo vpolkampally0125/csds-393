@@ -10,7 +10,6 @@ class JsonReader(inputString : String) {
     var gson : JsonParser
     var file : File
     var root : JsonObject
-
     var income : BudgetParent
     var expenses : BudgetParent
     var tags : MutableList<String>
