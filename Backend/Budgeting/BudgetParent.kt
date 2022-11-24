@@ -33,23 +33,18 @@ class BudgetParent(
         totalValue += entry.value
     }
 
-    fun removeValue(entry : BudgetEntry): Boolean {
+    fun removeValue(entry : BudgetEntry) {
         entries.remove(entry)
         totalValue -= entry.value
-        return true
     }
 
-    fun tagEntry(entry : BudgetEntry, tag : String): String {
+    fun tagEntry(entry : BudgetEntry, tag : String) {
         entry.tags.add(tag)
-        return tag
     }
 
-    fun removeTagFromEntry(entry : BudgetEntry, tag : String): Boolean {
-        entry.tags.remove(tag)
-        return true
-    }
+    fun removeTagFromEntry(entry : BudgetEntry, tag : String) { entry.tags.remove(tag) }
 
-    fun updateTotalVal(): Boolean {
+    fun updateTotalVal() {
         var totalVal = 0
 
         for (value in entries) {
@@ -57,8 +52,6 @@ class BudgetParent(
         }
 
         totalValue = totalVal
-
-        return true
     }
 
     override fun updateJson() : Boolean {
@@ -77,7 +70,6 @@ class BudgetParent(
                 }
             })
             updatedEntries.add(inputObject)
-
         }
         specRoot.addProperty("total", getTot())
         specRoot.add("entries", updatedEntries)

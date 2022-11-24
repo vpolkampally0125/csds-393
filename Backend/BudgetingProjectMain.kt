@@ -1,11 +1,16 @@
 import Budgeting.BudgetEntry
 import Budgeting.BudgetParent
+import Debt.DebtMain
+import FinancialGoals.FinancialGoals
+import org.jetbrains.annotations.TestOnly
 import java.util.*
 
 class BudgetingProjectMain(path : String) {
-    var reader : JsonReader;
+    var reader : JsonReader
     var income : BudgetParent
     var expenses : BudgetParent
+    var goals : FinancialGoals
+    var debts : DebtMain
     var tags : MutableList<String>
 
     fun getIncome() : Int { return income.getTot() }
@@ -26,6 +31,8 @@ class BudgetingProjectMain(path : String) {
         reader = JsonReader(path)
         income = reader.income
         expenses = reader.expenses
+        goals = reader.goals
+        debts = reader.debts
         tags = reader.tags
 
         income.removePastNodes()
@@ -39,4 +46,6 @@ fun main() {
     println("Total Expenses : ${instance.expenses.totalValue}")
     println("Income List: ${instance.income.entries}")
     println("Expenses List: ${instance.expenses.entries}")
+    println("Goals List: ${instance.goals.goalMap.values.first().goalName}" )
+    println("Debts List: ${instance.debts.debtMap.values.first().debtName}")
 }
